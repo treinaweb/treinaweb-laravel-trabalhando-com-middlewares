@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\TrataEmailMiddleware;
 use App\Http\Middleware\VerificaTokenMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -13,6 +14,15 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         //$middleware->prepend(VerificaTokenMiddleware::class);
+        $middleware->alias([
+            'VerificaToken' => VerificaTokenMiddleware::class,
+            'TrataEmail' => TrataEmailMiddleware::class
+        ]);
+
+        $middleware->appendToGroup('autentica', [
+            VerificaTokenMiddleware::class,
+            TrataEmailMiddleware::class
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

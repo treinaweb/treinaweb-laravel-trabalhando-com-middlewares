@@ -10,7 +10,4 @@ Route::get('/', function () {
 });
 
 Route::get('/pedidos', [PedidoController::class, 'index'])
-    ->middleware([
-        VerificaTokenMiddleware::class,
-        TrataEmailMiddleware::class
-    ]);
+    ->middleware('autentica');
