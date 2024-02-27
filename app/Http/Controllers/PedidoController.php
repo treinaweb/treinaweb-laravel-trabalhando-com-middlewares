@@ -8,8 +8,6 @@ class PedidoController extends Controller
 {
     public function index()
     {
-        var_dump(request()->all());
-
-        return ' lista de pedidos';
+        return response('Conteúdo da minha response');
     }
 }
