@@ -12,7 +12,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->prepend(VerificaTokenMiddleware::class);
+        //$middleware->prepend(VerificaTokenMiddleware::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

@@ -8,4 +8,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/pedidos', [PedidoController::class, 'index']);
+Route::get('/pedidos', [PedidoController::class, 'index'])->middleware(VerificaTokenMiddleware::class);

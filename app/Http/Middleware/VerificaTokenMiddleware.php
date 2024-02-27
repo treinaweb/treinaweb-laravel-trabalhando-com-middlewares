@@ -15,8 +15,9 @@ class VerificaTokenMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        //conteúdo do middleware
-        echo "Estou no middleware VerificaTokenMiddleware <br>";
+        if ($request->input('token') !== 'meu-token-secreto') {
+            return redirect('/');
+        }
 
         return $next($request);
     }
