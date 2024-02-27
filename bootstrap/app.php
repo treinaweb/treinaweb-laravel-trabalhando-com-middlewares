@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\AdicionaHeadersMiddleware;
 use App\Http\Middleware\TrataEmailMiddleware;
 use App\Http\Middleware\VerificaTokenMiddleware;
 use Illuminate\Foundation\Application;
@@ -16,7 +17,8 @@ return Application::configure(basePath: dirname(__DIR__))
         //$middleware->prepend(VerificaTokenMiddleware::class);
         $middleware->alias([
             'VerificaToken' => VerificaTokenMiddleware::class,
-            'TrataEmail' => TrataEmailMiddleware::class
+            'TrataEmail' => TrataEmailMiddleware::class,
+            'AdicionaHeaders' => AdicionaHeadersMiddleware::class
         ]);
 
         $middleware->appendToGroup('autentica', [

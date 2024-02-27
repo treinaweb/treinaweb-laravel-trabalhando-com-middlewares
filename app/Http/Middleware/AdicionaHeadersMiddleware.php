@@ -13,10 +13,14 @@ class AdicionaHeadersMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next, string $condicao = 'nao-ignorar'): Response
     {
         $response = $next($request);
 
+        if ($condicao === 'ignorar') {
+            return $response;
+        }
+        
         // $response->setContent($response->getContent() . ' Adicionado na middleware');
         $response->headers->add([
             'X-Treinaweb' => 'Adicionado no middleware'

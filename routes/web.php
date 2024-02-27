@@ -13,5 +13,5 @@ Route::get('/', function () {
 Route::get('/pedidos', [PedidoController::class, 'index'])
     ->middleware([
         'autentica',
-        AdicionaHeadersMiddleware::class
+        'AdicionaHeaders'
     ]);
